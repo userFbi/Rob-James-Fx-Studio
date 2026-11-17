@@ -25,7 +25,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://championshipchains.com">
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet">
 
 <script type="application/ld+json">
 {
@@ -482,6 +482,64 @@ html.js [data-rv]{opacity:0;transform:translateY(28px);transition:opacity .7s cu
 html.js [data-rv=zoom]{transform:scale(.94)}
 html.js [data-rv].in{opacity:1;transform:none}
 @media(prefers-reduced-motion:reduce){.cc-hero .cc-w>*,.cc-hero .cc-bg,.cotm-pic,.cc-cta .btn-primary,details[open]>p{animation:none!important}.progress{display:none}}
+
+/* ===== v9: restructure + improvements ===== */
+.cc-micro{gap:8px 24px;margin-top:24px;font:700 .92rem var(--body);color:var(--text)}
+.cc-micro li:before{font-size:1rem}
+.stats b{font-size:clamp(1.8rem,3.4vw,2.8rem)}
+@media(min-width:800px){.stats{grid-template-columns:repeat(5,minmax(0,1fr))}}
+@media(max-width:799px){.stats>div:last-child{grid-column:1/-1}}
+.proof{padding-block:30px}
+.proof .proof-top{margin-bottom:22px}
+.pcard{padding:clamp(26px,3.2vw,38px);gap:14px}
+.pcard h3{font-size:2.3rem}
+.pcard .price{font-size:2.7rem;line-height:1;color:var(--gold)}
+.pcard .turn{display:inline-block;align-self:flex-start;padding:7px 14px;border:1px solid var(--gold);border-radius:999px;background:rgba(242,169,0,.12);color:var(--gold-soft);font:700 .8rem var(--body);letter-spacing:.06em;text-transform:uppercase}
+.pcard ul{font-size:1rem;gap:8px}
+.pcard .btn{min-height:58px;font-size:1rem}
+.card .price{font-size:2.4rem}
+.card .btn{width:100%;min-height:48px}
+.review-bar{padding:30px 34px}
+.review-bar .score b{font-size:3.6rem}
+.review-bar .stars{font-size:1.5rem}
+.craft-top{display:grid;gap:48px;align-items:center}
+@media(min-width:900px){.craft-top{grid-template-columns:1.1fr .9fr}}
+.craft-top .craft-head{max-width:none}
+.craft-top .lede+.lede{margin-top:12px}
+.craft-top .why-photo{width:100%}
+.craft-top .crown{margin:0 0 16px}
+.tl-note{max-width:62ch;margin:18px auto 0;padding:12px 20px;border:1px dashed var(--gold-deep);border-radius:14px;color:var(--cream-ink);font-size:.95rem}
+.tl-note b{color:var(--gold-deep)}
+.wall a::after{content:attr(data-cap);opacity:1;font:600 .78rem/1.3 var(--body);letter-spacing:.01em;text-transform:none;padding:34px 12px 12px}
+.vs.them{opacity:.72;filter:saturate(.55)}
+.vs.us{transform:translateY(-4px)}
+@media(prefers-reduced-motion:reduce){.vs.us{transform:none}}
+
+/* ===== pinned horizontal-scroll craft story ===== */
+.hscroll{position:relative;margin-top:56px}
+.hs-sticky{position:relative;box-sizing:border-box;display:flex;align-items:center;overflow-x:auto;padding:8px 0 28px;scroll-snap-type:x proximity}
+.hs-track{display:flex;align-items:center;flex:none;width:max-content;gap:clamp(48px,7vw,120px);padding-inline:max(16px,calc((100vw - var(--max))/2 + 16px)) 10vw}
+.hs-intro{flex:none;width:min(62vw,820px)}
+.hs-intro .eyebrow{margin-bottom:22px}
+.hs-title{font-size:clamp(3rem,7.4vw,7rem);font-weight:800;line-height:.95;color:var(--cream)}
+.hs-hint{display:inline-block;margin-top:30px;color:var(--gold);font:700 .8rem var(--body);letter-spacing:.14em;text-transform:uppercase}
+.hs-panel{flex:none;display:flex;align-items:center;gap:clamp(28px,3.6vw,56px);scroll-snap-align:center}
+.hs-pic{margin:0;width:clamp(260px,24vw,400px);aspect-ratio:1/1.05;border-radius:18px;overflow:hidden;background:var(--panel);border:1px solid var(--line)}
+.hs-pic img{width:100%;height:100%;object-fit:cover}
+.hs-txt{width:clamp(240px,21vw,360px)}
+.hs-label{display:block;font:italic 400 clamp(2.2rem,3.2vw,3.2rem)/1 "Instrument Serif",Georgia,"Times New Roman",serif;color:var(--gold)}
+.hs-txt h3{margin-top:12px;font-size:clamp(1.9rem,2.8vw,2.9rem);font-weight:800;line-height:.98;color:var(--cream)}
+.hs-txt p{margin-top:14px;color:var(--muted);font-size:.95rem;line-height:1.55}
+@media(max-width:760px){
+  .hs-intro{width:82vw}
+  .hs-panel{flex-direction:column;align-items:flex-start;width:78vw;gap:20px}
+  .hs-pic{width:100%;aspect-ratio:4/3.2}
+  .hs-txt{width:100%}
+}
+/* pinned mode (enabled by JS): vertical scroll drives the sideways movement */
+.hscroll.hs-on .hs-sticky{position:sticky;top:0;height:100vh;height:100svh;padding:68px 0 0;overflow:hidden;scroll-snap-type:none}
+.hscroll.hs-on .hs-track{will-change:transform}
+@media(max-width:959px){.hscroll.hs-on .hs-sticky{padding-bottom:76px}}
 </style>
 <script>try{if("IntersectionObserver"in window&&!matchMedia("(prefers-reduced-motion: reduce)").matches)document.documentElement.className+=" js"}catch(e){}</script>
 </head>
@@ -503,18 +561,41 @@ html.js [data-rv].in{opacity:1;transform:none}
 <div class="cc-cta"><a class="btn btn-primary" href="https://championshipchains.com/pages/fully-custom-vs-custom-stock-chains">Design Your Chain</a><a class="btn btn-ghost" href="https://championshipchains.com/collections/stock">Shop Ready-to-Ship</a></div>
 <ul class="cc-micro"><li>Unlimited design revisions</li><li>Stock ships in 5–7 business days</li><li>Insured shipping</li></ul></div></section>
 <!-- 7 STAT BAND -->
-<div class="band" role="region" aria-label="Championship Chains at a glance">
+<!-- <div class="band" role="region" aria-label="Championship Chains at a glance">
   <div class="wrap stats">
     <div><b>15+</b><span>Years Experience</span></div>
-    <div><b>Thousands</b><span>Chains Delivered</span></div>
+    <div><b>2,000+</b><span>Chains Delivered</span></div>
     <div><b>4.5&#9733;</b><span>Rated by Champions</span></div>
-    <div><b>3-4 Wks</b><span>Fully Custom Turnaround</span></div>
+    <div><b>5&ndash;7 Days</b><span>Stock Chains Ship</span></div>
+    <div><b>3&ndash;4 Wks</b><span>Fully Custom Turnaround</span></div>
   </div>
-</div>
+</div> -->
 
+<!-- LOGO STRIP (social proof, right after stats) -->
+<section class="proof" aria-label="Trusted by champions and leading brands">
+  <div class="proof-top"><p>Trusted by champions, teams &amp; leading brands</p></div>
+  <div class="marquee">
+    <ul>
+      <li><img src="https://championshipchains.com/cdn/shop/files/Screenshot_14.png?v=1781810338&width=300" alt="Dragway Union Championship Chain" width="150" height="62" loading="lazy"></li>
+      <li><img src="https://championshipchains.com/cdn/shop/files/Screenshot_15.png?v=1781810338&width=300" alt="Glory Auto Sales Award Chain" width="150" height="62" loading="lazy"></li>
+      <li><img src="https://championshipchains.com/cdn/shop/files/Screenshot_16.png?v=1781810338&width=300" alt="NBA G league award championship chain" width="150" height="62" loading="lazy"></li>
+      <li><img src="https://championshipchains.com/cdn/shop/files/Screenshot_17.png?v=1781810338&width=300" alt="Under Armour Championship Chain Award" width="150" height="62" loading="lazy"></li>
+      <li><img src="https://championshipchains.com/cdn/shop/files/Screenshot_18.png?v=1781810338&width=300" alt="Baseball Factory" width="150" height="62" loading="lazy"></li>
+      <li><img src="https://championshipchains.com/cdn/shop/files/Screenshot_19.png?v=1781810338&width=300" alt="DHL Shipping Awawrd" width="150" height="62" loading="lazy"></li>
+    </ul>
+    <ul aria-hidden="true">
+      <li><img src="https://championshipchains.com/cdn/shop/files/Screenshot_14.png?v=1781810338&width=300" alt="" width="150" height="62" loading="lazy"></li>
+      <li><img src="https://championshipchains.com/cdn/shop/files/Screenshot_15.png?v=1781810338&width=300" alt="" width="150" height="62" loading="lazy"></li>
+      <li><img src="https://championshipchains.com/cdn/shop/files/Screenshot_16.png?v=1781810338&width=300" alt="" width="150" height="62" loading="lazy"></li>
+      <li><img src="https://championshipchains.com/cdn/shop/files/Screenshot_17.png?v=1781810338&width=300" alt="" width="150" height="62" loading="lazy"></li>
+      <li><img src="https://championshipchains.com/cdn/shop/files/Screenshot_18.png?v=1781810338&width=300" alt="" width="150" height="62" loading="lazy"></li>
+      <li><img src="https://championshipchains.com/cdn/shop/files/Screenshot_19.png?v=1781810338&width=300" alt="" width="150" height="62" loading="lazy"></li>
+    </ul>
+  </div>
+</section>
 
 <!-- CRO: PICK YOUR PATH -->
-<section class="path" aria-labelledby="path">
+<!-- <section class="path" aria-labelledby="path">
   <div class="wrap">
     <h2 id="path">Pick Your <em>Path</em></h2>
     <p class="sub">Need it fast, or want it built from scratch? Choose what fits your timeline and budget.</p>
@@ -523,43 +604,25 @@ html.js [data-rv].in{opacity:1;transform:none}
         <span class="tagline">Fastest</span>
         <h3>Stock Chains</h3>
         <div class="price">From $159</div>
-        <ul><li>Ready-made designs, custom vinyl graphics</li><li>5–7 business days (rush 2–3 days available)</li><li>Insured UPS shipping, e.g. Ground from $16.99</li></ul>
+        <div class="turn">&#9201; Ships in 5&ndash;7 business days</div>
+        <ul><li>Ready-made designs, custom vinyl graphics</li><li>Rush 2&ndash;3 day production available</li><li>Insured UPS shipping, Ground from $16.99</li></ul>
         <a class="btn btn-primary" data-cta="path-stock" href="https://championshipchains.com/collections/stock">Shop Stock Chains</a>
       </div>
       <div class="pcard hot">
         <span class="tagline">Most Popular For Teams</span>
         <h3>Fully Custom Chains</h3>
-        <div class="price">$450 – $1,300</div>
-        <ul><li>Designed from scratch with our artists</li><li>3–4 weeks after art approval and deposit</li><li>Unlimited revisions until you approve</li></ul>
+        <div class="price">$450 &ndash; $1,300</div>
+        <div class="turn">&#9201; 3&ndash;4 weeks after art approval</div>
+        <ul><li>Designed from scratch with our artists</li><li>Unlimited revisions until you approve</li><li>Production starts after approval + 50% deposit</li></ul>
         <a class="btn btn-primary" data-cta="path-custom" href="https://championshipchains.com/pages/fully-custom-vs-custom-stock-chains">Start My Custom Design</a>
       </div>
     </div>
-    <p class="chips-label">Or shop by sport</p>
-    <div class="chips"><a data-cta="sport-football" href="https://championshipchains.com/collections/football">Football</a><a data-cta="sport-basketball" href="https://championshipchains.com/collections/basketball">Basketball</a><a data-cta="sport-wrestling" href="https://championshipchains.com/collections/wrestling">Wrestling</a><a data-cta="sport-baseball" href="https://championshipchains.com/collections/baseball">Baseball</a><a data-cta="sport-hockey" href="https://championshipchains.com/collections/hockey">Hockey</a><a data-cta="sport-mma" href="https://championshipchains.com/collections/mma">MMA</a><a data-cta="sport-golf" href="https://championshipchains.com/collections/golf">Golf</a><a data-cta="sport-fitness" href="https://championshipchains.com/collections/fitness">Fitness</a><a data-cta="sport-sale" href="https://championshipchains.com/collections/sale">Sale</a></div>
     <p class="help-line">Not sure which one? <a href="tel:4193294713" data-cta="path-call">Call 419-329-4713</a> or <a href="https://championshipchains.com/pages/contact" data-cta="path-quote">request a quote</a>.</p>
   </div>
-</section>
-
-<!-- 3 STOCK CHAINS + VIDEO -->
-<section aria-labelledby="stock">
-  <div class="wrap">
-    <div class="stock-head">
-      <div>
-        <span class="eyebrow">Featured</span>
-        <h2 id="stock">Stock <em>Chains</em></h2>
-        <p class="lede">We are the premier manufacturer of custom championship rings, belts, and chains. With over 15+ years of experience, we deliver unmatched craftsmanship and design. Our products are trusted by champions across sports and industries. We take pride in our commitment to quality and excellence. Customer satisfaction is at the core of everything we do.</p>
-      </div>
-      <div class="btn-row"><a class="btn btn-primary" href="https://championshipchains.com/collections/premier">View All Chains</a></div>
-    </div>
-    <div class="video" id="stock-video" data-youtube="MS-k0tDCqws">
-      <img src="https://championshipchains.com/cdn/shop/files/Image_5_46740a51-14a0-45ce-89e3-fce208e8b0bf.png?v=1782238257&width=1600" alt="Championship Chains video thumbnail" width="1600" height="900" loading="lazy">
-      <button class="play" type="button" aria-label="Play video: Championship Chains, premium quality, built for champions"><svg viewBox="0 0 24 24" width="38" height="38" aria-hidden="true"><path d="M8 5v14l11-7z" fill="#1a1200"/></svg></button>
-    </div>
-  </div>
-</section>
+</section> -->
 
 <!-- 4 BENTO CATEGORIES -->
-<section aria-labelledby="cats" style="padding-top:0">
+<section aria-labelledby="cats">
   <div class="wrap center">
     <span class="eyebrow">Explore Our</span>
     <h2 id="cats">Collection <em>Categories</em></h2>
@@ -582,6 +645,8 @@ html.js [data-rv].in{opacity:1;transform:none}
         <div><h3>Corporate Awards</h3><p>Recognition programs for employees and partners.</p><span>Learn More &rarr;</span></div>
       </a>
     </div>
+    <p class="chips-label">Shop by sport</p>
+    <div class="chips"><a data-cta="sport-football" href="https://championshipchains.com/collections/football">Football</a><a data-cta="sport-basketball" href="https://championshipchains.com/collections/basketball">Basketball</a><a data-cta="sport-wrestling" href="https://championshipchains.com/collections/wrestling">Wrestling</a><a data-cta="sport-baseball" href="https://championshipchains.com/collections/baseball">Baseball</a><a data-cta="sport-hockey" href="https://championshipchains.com/collections/hockey">Hockey</a><a data-cta="sport-mma" href="https://championshipchains.com/collections/mma">MMA</a><a data-cta="sport-golf" href="https://championshipchains.com/collections/golf">Golf</a><a data-cta="sport-fitness" href="https://championshipchains.com/collections/fitness">Fitness</a><a data-cta="sport-sale" href="https://championshipchains.com/collections/sale">Sale</a></div>
   </div>
 </section>
 
@@ -596,19 +661,19 @@ html.js [data-rv].in{opacity:1;transform:none}
     <div class="products">
       <article class="card">
         <a class="pic" href="https://championshipchains.com/products/hermes-gold-championship-chain"><img src="https://championshipchains.com/cdn/shop/files/image_5_1.webp?v=1786355533&width=533" alt="Hermes Gold Championship Chain" width="533" height="533" loading="lazy"><span class="chip">Gold</span></a>
-        <div class="info"><h3><a href="https://championshipchains.com/products/hermes-gold-championship-chain">Hermes Gold Championship Chain</a></h3><p class="meta">7.5" all-metal chestplate. No plastics. Chain connects at the top.</p><p class="price"><small>Starting at</small>$169.00</p><a class="btn btn-primary btn-sm" href="https://championshipchains.com/products/hermes-gold-championship-chain">Shop This Chain</a></div>
+        <div class="info"><h3><a href="https://championshipchains.com/products/hermes-gold-championship-chain">Hermes Gold Championship Chain</a></h3><p class="meta">7.5" all-metal chestplate. No plastics. Chain connects at the top.</p><p class="price"><small>Starting at</small>$169.00</p><a class="btn btn-primary btn-sm" href="https://championshipchains.com/products/hermes-gold-championship-chain">Customize &amp; Buy</a></div>
       </article>
       <article class="card">
         <a class="pic" href="https://championshipchains.com/products/hermes-silver-championship-chain"><img src="https://championshipchains.com/cdn/shop/files/image_1_1.webp?v=1786420645&width=533" alt="Hermes Silver Championship Chain" width="533" height="533" loading="lazy"><span class="chip">Silver</span></a>
-        <div class="info"><h3><a href="https://championshipchains.com/products/hermes-silver-championship-chain">Hermes Silver Championship Chain</a></h3><p class="meta">7.5" all-metal chestplate. No plastics. Chain connects at the top.</p><p class="price"><small>Starting at</small>$159.00</p><a class="btn btn-primary btn-sm" href="https://championshipchains.com/products/hermes-silver-championship-chain">Shop This Chain</a></div>
+        <div class="info"><h3><a href="https://championshipchains.com/products/hermes-silver-championship-chain">Hermes Silver Championship Chain</a></h3><p class="meta">7.5" all-metal chestplate. No plastics. Chain connects at the top.</p><p class="price"><small>Starting at</small>$159.00</p><a class="btn btn-primary btn-sm" href="https://championshipchains.com/products/hermes-silver-championship-chain">Customize &amp; Buy</a></div>
       </article>
       <article class="card">
         <a class="pic" href="https://championshipchains.com/products/mvp-fantasy-football-championship-chain"><img src="https://championshipchains.com/cdn/shop/files/image_2.webp?v=1793275818&width=533" alt="MVP Fantasy Football Gold Championship Chain" width="533" height="533" loading="lazy"><span class="chip">Gold</span></a>
-        <div class="info"><h3><a href="https://championshipchains.com/products/mvp-fantasy-football-championship-chain">MVP Fantasy Football Gold Championship Chain</a></h3><p class="meta">Solid brass medallion, gold chain. Turnaround 10-14 days.</p><p class="price"><small>Starting at</small>$199.99</p><a class="btn btn-primary btn-sm" href="https://championshipchains.com/products/mvp-fantasy-football-championship-chain">Shop This Chain</a></div>
+        <div class="info"><h3><a href="https://championshipchains.com/products/mvp-fantasy-football-championship-chain">MVP Fantasy Football Gold Championship Chain</a></h3><p class="meta">Solid brass medallion, gold chain. Turnaround 10-14 days.</p><p class="price"><small>Starting at</small>$199.99</p><a class="btn btn-primary btn-sm" href="https://championshipchains.com/products/mvp-fantasy-football-championship-chain">Customize &amp; Buy</a></div>
       </article>
       <article class="card">
         <a class="pic" href="https://championshipchains.com/products/mvp-fantasy-football-silver-championship-chain"><img src="https://championshipchains.com/cdn/shop/files/image_2_1_1.webp?v=1786423034&width=533" alt="MVP Fantasy Football Silver Championship Chain" width="533" height="533" loading="lazy"><span class="chip">Silver</span></a>
-        <div class="info"><h3><a href="https://championshipchains.com/products/mvp-fantasy-football-silver-championship-chain">MVP Fantasy Football Silver Championship Chain</a></h3><p class="meta">Solid brass medallion, silver chain. Turnaround 10-14 days.</p><p class="price"><small>Starting at</small>$159.00</p><a class="btn btn-primary btn-sm" href="https://championshipchains.com/products/mvp-fantasy-football-silver-championship-chain">Shop This Chain</a></div>
+        <div class="info"><h3><a href="https://championshipchains.com/products/mvp-fantasy-football-silver-championship-chain">MVP Fantasy Football Silver Championship Chain</a></h3><p class="meta">Solid brass medallion, silver chain. Turnaround 10-14 days.</p><p class="price"><small>Starting at</small>$159.00</p><a class="btn btn-primary btn-sm" href="https://championshipchains.com/products/mvp-fantasy-football-silver-championship-chain">Customize &amp; Buy</a></div>
       </article>
     </div>
     <div class="review-bar">
@@ -619,83 +684,64 @@ html.js [data-rv].in{opacity:1;transform:none}
   </div>
 </section>
 
-<!-- 6 WHY -->
-<section aria-labelledby="why" style="padding-bottom:clamp(60px,8vw,110px)">
-  <div class="wrap why-grid">
-    <div class="why-photo">
-      <img src="https://championshipchains.com/cdn/shop/files/508745553_18283397035251882_5439402992255659027_n.jpg?v=1786015366&width=1000" alt="Champion proudly wearing a solid brass Championship Chains chest plate" width="800" height="1067" loading="lazy">
-      <div class="seal">Solid<br>Brass</div>
-    </div>
-    <div>
-      <span class="eyebrow">Why</span>
-      <h2 id="why">Championship <em>Chains</em></h2>
-      <p class="lede">Every championship chain is crafted with precision, built to impress and made to last.</p>
-      <ul class="why-list">
-        <li><h3>Premium Metal Construction</h3><p>Solid brass chest plates for unmatched durability and weight.</p></li>
-        <li><h3>Multi-Layer 3D Design</h3><p>Expertly crafted layers deliver exceptional depth and realistic detail.</p></li>
-        <li><h3>Custom Professional Artwork</h3><p>Professional designs with unlimited revisions until you're 100% satisfied.</p></li>
-      </ul>
-      <div class="btn-row">
-        <a class="btn btn-primary" href="https://championshipchains.com/pages/fully-custom-vs-custom-stock-chains">Design Your Chain</a>
-        <a class="btn btn-ghost" href="https://championshipchains.com/pages/our-family">View Gallery</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- LOGO MARQUEE (after Why) -->
-<section class="proof" aria-label="Trusted by champions and leading brands">
-  <div class="marquee">
-    <ul>
-      <li><img src="https://championshipchains.com/cdn/shop/files/Screenshot_14.png?v=1781810338&width=300" alt="Dragway Union Championship Chain" width="150" height="62" loading="lazy"></li>
-      <li><img src="https://championshipchains.com/cdn/shop/files/Screenshot_15.png?v=1781810338&width=300" alt="Glory Auto Sales Award Chain" width="150" height="62" loading="lazy"></li>
-      <li><img src="https://championshipchains.com/cdn/shop/files/Screenshot_16.png?v=1781810338&width=300" alt="NBA G league award championship chain" width="150" height="62" loading="lazy"></li>
-      <li><img src="https://championshipchains.com/cdn/shop/files/Screenshot_17.png?v=1781810338&width=300" alt="Under Armour Championship Chain Award" width="150" height="62" loading="lazy"></li>
-      <li><img src="https://championshipchains.com/cdn/shop/files/Screenshot_18.png?v=1781810338&width=300" alt="Baseball Factory" width="150" height="62" loading="lazy"></li>
-      <li><img src="https://championshipchains.com/cdn/shop/files/Screenshot_19.png?v=1781810338&width=300" alt="DHL Shipping Awawrd" width="150" height="62" loading="lazy"></li>
-    </ul>
-    <ul aria-hidden="true">
-      <li><img src="https://championshipchains.com/cdn/shop/files/Screenshot_14.png?v=1781810338&width=300" alt="" width="150" height="62" loading="lazy"></li>
-      <li><img src="https://championshipchains.com/cdn/shop/files/Screenshot_15.png?v=1781810338&width=300" alt="" width="150" height="62" loading="lazy"></li>
-      <li><img src="https://championshipchains.com/cdn/shop/files/Screenshot_16.png?v=1781810338&width=300" alt="" width="150" height="62" loading="lazy"></li>
-      <li><img src="https://championshipchains.com/cdn/shop/files/Screenshot_17.png?v=1781810338&width=300" alt="" width="150" height="62" loading="lazy"></li>
-      <li><img src="https://championshipchains.com/cdn/shop/files/Screenshot_18.png?v=1781810338&width=300" alt="" width="150" height="62" loading="lazy"></li>
-      <li><img src="https://championshipchains.com/cdn/shop/files/Screenshot_19.png?v=1781810338&width=300" alt="" width="150" height="62" loading="lazy"></li>
-    </ul>
-  </div>
-</section>
-
-<!-- 8 CRAFT zig-zag -->
+<!-- CRAFT (merged with "Why" + video) -->
 <section aria-labelledby="craft">
   <div class="wrap">
-    <div class="craft-head">
-      <svg class="crown" style="margin:0 0 16px" viewBox="0 0 64 48" width="56" height="42" role="img" aria-label="Crown"><path d="M5 40 9 14l14 13L32 8l9 19 14-13 4 26z" fill="#f2a900"/><rect x="5" y="42" width="54" height="5" rx="2" fill="#ffd36a"/><circle cx="9" cy="11" r="3.5" fill="#ffd36a"/><circle cx="32" cy="5" r="3.5" fill="#ffd36a"/><circle cx="55" cy="11" r="3.5" fill="#ffd36a"/></svg>
-      <h2 id="craft">Crafted to stand out. <em>Built to last</em></h2>
-      <p class="lede">From premium finishes to heavy metal construction, every detail is engineered to bring your championship vision to life.</p>
+    <div class="craft-top">
+      <div class="craft-head">
+        <svg class="crown" style="margin:0 0 16px" viewBox="0 0 64 48" width="56" height="42" role="img" aria-label="Crown"><path d="M5 40 9 14l14 13L32 8l9 19 14-13 4 26z" fill="#f2a900"/><rect x="5" y="42" width="54" height="5" rx="2" fill="#ffd36a"/><circle cx="9" cy="11" r="3.5" fill="#ffd36a"/><circle cx="32" cy="5" r="3.5" fill="#ffd36a"/><circle cx="55" cy="11" r="3.5" fill="#ffd36a"/></svg>
+        <span class="eyebrow">Why Championship Chains</span>
+        <h2 id="craft">Crafted to stand out. <em>Built to last</em></h2>
+        <p class="lede">From premium finishes to heavy metal construction, every detail is engineered to bring your championship vision to life. Solid brass chest plates, multi-layer 3D design and professional artwork with unlimited revisions until you&rsquo;re 100% satisfied.</p>
+        <p class="lede">We are the premier manufacturer of custom championship rings, belts, and chains. With 15+ years of experience, we&rsquo;re trusted by champions across sports and industries.</p>
+        <div class="btn-row">
+          <a class="btn btn-primary" href="https://championshipchains.com/pages/fully-custom-vs-custom-stock-chains">Design Your Chain</a>
+          <a class="btn btn-ghost" href="https://championshipchains.com/pages/our-family">View Gallery</a>
+        </div>
+      </div>
+  <div class="why-photo">
+    <img src="https://championshipchains.com/cdn/shop/files/508745553_18283397035251882_5439402992255659027_n.jpg?v=1786015366&width=1000" alt="Champion proudly wearing a solid brass Championship Chains chest plate" width="800" height="1067" loading="lazy">
+    <div class="seal">Solid<br>Brass</div>
+  </div>
     </div>
-    <div class="rows">
-      <div class="row">
-        <div class="rimg"><img src="https://championshipchains.com/cdn/shop/files/Frame_353.png?v=1782242391&width=900" alt="Gold and silver badge with 'SFC' logo and text" width="900" height="720" loading="lazy"></div>
-        <div class="rtxt"><img class="ic" src="https://championshipchains.com/cdn/shop/files/Frame_26.png?v=1782134598&width=120" alt="Three yellow square blocks stacked on top of each other" width="44" height="44" loading="lazy"><h3>Multiple layers</h3><p>We use a technique to bring the custom chest plate to life, &amp; put together multiple layers of cut metal to give your championship chain a 3D look.</p></div>
+  </div>
+  <div class="hscroll" id="craft-hscroll">
+    <div class="hs-sticky">
+      <div class="hs-track">
+        <div class="hs-intro">
+          <span class="eyebrow">Our Craft</span>
+          <h3 class="hs-title">How a championship chain gets built to last.</h3>
+          <span class="hs-hint">Keep scrolling &rarr;</span>
+        </div>
+        <article class="hs-panel">
+          <figure class="hs-pic"><img src="https://championshipchains.com/cdn/shop/files/Frame_353.png?v=1782242391&width=900" alt="Gold and silver badge with 'SFC' logo and text" width="900" height="900" decoding="async"></figure>
+          <div class="hs-txt"><span class="hs-label">01</span><h3>Multiple layers</h3><p>We use a technique to bring the custom chest plate to life, &amp; put together multiple layers of cut metal to give your championship chain a 3D look.</p></div>
+        </article>
+        <article class="hs-panel">
+          <figure class="hs-pic"><img src="https://championshipchains.com/cdn/shop/files/Frame_353_1.png?v=1782242391&width=900" alt="Gold chain with a decorative metal tag" width="900" height="900" decoding="async"></figure>
+          <div class="hs-txt"><span class="hs-label">02</span><h3>Chrome, Gold or Both</h3><p>Choose from a variety of premium metal finishes including gold plating and chrome plating. Create the perfect look that represents you.</p></div>
+        </article>
+        <article class="hs-panel">
+          <figure class="hs-pic"><img src="https://championshipchains.com/cdn/shop/files/Frame_353_2.png?v=1782242390&width=900" alt="Silver chain with 'All-American Baseball' badge" width="900" height="900" decoding="async"></figure>
+          <div class="hs-txt"><span class="hs-label">03</span><h3>Heavy Metal Chest plates</h3><p>Our solid brass chest plates are built to resemble the heavyweight champion you are. Made to last. Made to impress.</p></div>
+        </article>
+        <article class="hs-panel">
+          <figure class="hs-pic"><img src="https://championshipchains.com/cdn/shop/files/Frame_353_3.png?v=1782242391&width=900" alt="Gold chain with a decorative pendant featuring logos" width="900" height="900" decoding="async"></figure>
+          <div class="hs-txt"><span class="hs-label">04</span><h3>High quality custom designs</h3><p>We bring your ideas to life with premium custom designs crafted with precision, creativity, and attention to every detail.</p></div>
+        </article>
       </div>
-      <div class="row">
-        <div class="rimg"><img src="https://championshipchains.com/cdn/shop/files/Frame_353_1.png?v=1782242391&width=900" alt="Gold chain with a decorative metal tag" width="900" height="720" loading="lazy"></div>
-        <div class="rtxt"><img class="ic" src="https://championshipchains.com/cdn/shop/files/Frame_26_1.png?v=1782134597&width=120" alt="Gold shield icon with a checkmark" width="44" height="44" loading="lazy"><h3>Chrome, Gold or Both</h3><p>Choose from a variety of premium metal finishes including gold plating and chrome plating. Create the perfect look that represents you.</p></div>
-      </div>
-      <div class="row">
-        <div class="rimg"><img src="https://championshipchains.com/cdn/shop/files/Frame_353_2.png?v=1782242390&width=900" alt="Silver chain with 'All-American Baseball' badge" width="900" height="720" loading="lazy"></div>
-        <div class="rtxt"><img class="ic" src="https://championshipchains.com/cdn/shop/files/Frame_26_2.png?v=1782134597&width=120" alt="Yellow dumbbell icon" width="44" height="44" loading="lazy"><h3>Heavy Metal Chest plates</h3><p>Our solid brass chest plates are built to resemble the heavyweight champion you are. Made to last. Made to impress.</p></div>
-      </div>
-      <div class="row">
-        <div class="rimg"><img src="https://championshipchains.com/cdn/shop/files/Frame_353_3.png?v=1782242391&width=900" alt="Gold chain with a decorative pendant featuring logos" width="900" height="720" loading="lazy"></div>
-        <div class="rtxt"><img class="ic" src="https://championshipchains.com/cdn/shop/files/Frame_26_3.png?v=1782134597&width=120" alt="Yellow pencil icon" width="44" height="44" loading="lazy"><h3>High quality custom designs</h3><p>We bring your ideas to life with premium custom designs crafted with precision, creativity, and attention to every detail.</p></div>
-      </div>
+    </div>
+  </div>
+  <!-- <div class="wrap">
+    <div class="video" id="stock-video" data-youtube="MS-k0tDCqws">
+      <img src="https://championshipchains.com/cdn/shop/files/Image_5_46740a51-14a0-45ce-89e3-fce208e8b0bf.png?v=1782238257&width=1600" alt="Championship Chains video thumbnail" width="1600" height="900" loading="lazy">
+      <button class="play" type="button" aria-label="Play video: Championship Chains, premium quality, built for champions"><svg viewBox="0 0 24 24" width="38" height="38" aria-hidden="true"><path d="M8 5v14l11-7z" fill="#1a1200"/></svg></button>
     </div>
     <div class="legacy">
       <p>Your legacy. Our craftsmanship.</p>
       <a class="btn btn-primary" href="https://championshipchains.com/collections/premier">View Premier Showroom</a>
     </div>
-  </div>
+  </div> -->
 </section>
 
 <!-- 9 CREAM TIMELINE -->
@@ -704,6 +750,7 @@ html.js [data-rv].in{opacity:1;transform:none}
     <span class="eyebrow">How It Works</span>
     <h2 id="process">Simple Process. <em>Premium Results.</em></h2>
     <p class="lede">From your idea to a championship chain, we make it seamless.</p>
+    <p class="tl-note"><b>Stock chains:</b> ship in 5&ndash;7 business days. <b>Fully custom:</b> design approval first, then 3&ndash;4 weeks of production.</p>
     <ol class="line">
       <li><span class="dot"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 6a12 12 0 0 0-6 22.4V34h12v-5.6A12 12 0 0 0 24 6z"/><path d="M19 39h10M21 44h6"/></svg></span><h3>Share Your Idea</h3><p>Tell us your vision, event details, and preferences.</p></li>
       <li><span class="dot"><svg viewBox="0 0 48 48" aria-hidden="true"><rect x="5" y="8" width="38" height="25" rx="3"/><path d="M17 41h14M24 33v8"/><path d="M16 26l10-10 4 4-10 10-5 1z"/></svg></span><h3>Receive Custom Design Support</h3><p>Work with our team to develop your unique chain design.</p></li>
@@ -714,31 +761,6 @@ html.js [data-rv].in{opacity:1;transform:none}
     <div class="btn-row" style="justify-content:center">
       <a class="btn btn-dark" href="https://championshipchains.com/pages/fully-custom-vs-custom-stock-chains">Start Your Design</a>
       <a class="btn btn-ghost" style="color:var(--gold-deep);border-color:var(--gold-deep)" href="https://championshipchains.com/pages/ordering-process">Ordering Process</a>
-    </div>
-  </div>
-</section>
-
-<!-- 10 GALLERY WALL -->
-<section aria-labelledby="wall">
-  <div class="wrap center">
-    <span class="eyebrow">Our Family. Our Champions.</span>
-    <h2 id="wall">Real Champions. <em>Real Moments.</em></h2>
-    <p class="lede">Custom crafted championship chains trusted by athletes, teams, brands, and organizations nationwide.</p>
-    <div class="wall">
-      <a href="https://championshipchains.com/pages/our-family"><img src="https://championshipchains.com/cdn/shop/files/728527826_18329732443251882_6459936394698372328_n.jpg?v=1786015365&width=1000" alt="Champion Moment: customer with a Championship Chains award chain" width="400" height="500" loading="lazy"></a>
-      <a href="https://championshipchains.com/pages/our-family"><img src="https://championshipchains.com/cdn/shop/files/726391935_18329732494251882_3333679724327886903_n.jpg?v=1786015365&width=1000" alt="Champion Moment: team celebrating with custom chains" width="400" height="500" loading="lazy"></a>
-      <a href="https://championshipchains.com/pages/our-family"><img src="https://championshipchains.com/cdn/shop/files/727799325_18329732476251882_4966674586866262166_n.jpg?v=1786015365&width=1000" alt="Champion Moment: athlete wearing a championship chain" width="400" height="500" loading="lazy"></a>
-      <a href="https://championshipchains.com/pages/our-family"><img src="https://championshipchains.com/cdn/shop/files/726910687_18329732461251882_539235206163139287_n.jpg?v=1786015365&width=1000" alt="Champion Moment: league champion with award chain" width="400" height="500" loading="lazy"></a>
-      <a href="https://championshipchains.com/pages/our-family"><img src="https://championshipchains.com/cdn/shop/files/503027900_18282059512251882_560323140236409943_n.jpg?v=1786015365&width=1000" alt="Champion Moment: custom chain presentation" width="400" height="500" loading="lazy"></a>
-      <a href="https://championshipchains.com/pages/our-family"><img src="https://championshipchains.com/cdn/shop/files/726963338_18329732464251882_7189758927221654551_n.jpg?v=1786015366&width=1000" alt="Champion Moment: fantasy football champion with chain" width="400" height="500" loading="lazy"></a>
-      <a href="https://championshipchains.com/pages/our-family"><img src="https://championshipchains.com/cdn/shop/files/560360194_18295770790251882_2067077692590798460_n.jpg?v=1786015365&width=1000" alt="Champion Moment: wrestler with championship chain" width="400" height="500" loading="lazy"></a>
-      <a href="https://championshipchains.com/pages/our-family"><img src="https://championshipchains.com/cdn/shop/files/619140599_17983620923951385_1092097088650053000_n.jpg?v=1786015365&width=1000" alt="Champion Moment: coach with custom chain" width="400" height="500" loading="lazy"></a>
-      <a href="https://championshipchains.com/pages/our-family"><img src="https://championshipchains.com/cdn/shop/files/491167099_18277479973251882_1081488966773889300_n.jpg?v=1786015365&width=1000" alt="Champion Moment: organization awarding chains" width="400" height="500" loading="lazy"></a>
-      <a href="https://championshipchains.com/pages/our-family"><img src="https://championshipchains.com/cdn/shop/files/611774660_18307944100251882_1818532093318471871_n.jpg?v=1786015365&width=1000" alt="Champion Moment: champion showing off a chain" width="400" height="500" loading="lazy"></a>
-    </div>
-    <div class="btn-row" style="justify-content:center">
-      <a class="btn btn-primary" href="https://championshipchains.com/pages/our-family">See The Full Gallery</a>
-      <a class="btn btn-ghost" href="https://championshipchains.com/pages/fully-custom-vs-custom-stock-chains">Design Your Chain</a>
     </div>
   </div>
 </section>
@@ -796,7 +818,33 @@ html.js [data-rv].in{opacity:1;transform:none}
         </ul>
       </div>
     </div>
-    <div class="btn-row" style="justify-content:center"><a class="btn btn-primary" href="https://championshipchains.com/pages/fully-custom-vs-custom-stock-chains">See Fully Custom vs Stock</a></div>
+    <div class="btn-row" style="justify-content:center"><a class="btn btn-primary" href="https://championshipchains.com/pages/fully-custom-vs-custom-stock-chains">Design Your Chain</a><a class="btn btn-ghost" href="https://championshipchains.com/pages/fully-custom-vs-custom-stock-chains">See Fully Custom vs Stock</a></div>
+  </div>
+</section>
+
+<!-- 10 GALLERY WALL -->
+<section aria-labelledby="wall">
+  <div class="wrap center">
+    <span class="eyebrow">Our Family. Our Champions.</span>
+    <h2 id="wall">Real Champions. <em>Real Moments.</em></h2>
+    <p class="lede">Custom crafted championship chains trusted by athletes, teams, brands, and organizations nationwide.</p>
+    <div class="wall">
+      <a data-cap="Customer with a Championship Chains award chain" href="https://championshipchains.com/pages/our-family"><img src="https://championshipchains.com/cdn/shop/files/728527826_18329732443251882_6459936394698372328_n.jpg?v=1786015365&width=1000" alt="Champion Moment: customer with a Championship Chains award chain" width="400" height="500" loading="lazy"></a>
+      <a data-cap="Team celebrating with custom chains" href="https://championshipchains.com/pages/our-family"><img src="https://championshipchains.com/cdn/shop/files/726391935_18329732494251882_3333679724327886903_n.jpg?v=1786015365&width=1000" alt="Champion Moment: team celebrating with custom chains" width="400" height="500" loading="lazy"></a>
+      <a data-cap="Athlete wearing a championship chain" href="https://championshipchains.com/pages/our-family"><img src="https://championshipchains.com/cdn/shop/files/727799325_18329732476251882_4966674586866262166_n.jpg?v=1786015365&width=1000" alt="Champion Moment: athlete wearing a championship chain" width="400" height="500" loading="lazy"></a>
+      <a data-cap="League champion with award chain" href="https://championshipchains.com/pages/our-family"><img src="https://championshipchains.com/cdn/shop/files/726910687_18329732461251882_539235206163139287_n.jpg?v=1786015365&width=1000" alt="Champion Moment: league champion with award chain" width="400" height="500" loading="lazy"></a>
+      <a data-cap="Custom chain presentation" href="https://championshipchains.com/pages/our-family"><img src="https://championshipchains.com/cdn/shop/files/503027900_18282059512251882_560323140236409943_n.jpg?v=1786015365&width=1000" alt="Champion Moment: custom chain presentation" width="400" height="500" loading="lazy"></a>
+      <a data-cap="Fantasy football champion with chain" href="https://championshipchains.com/pages/our-family"><img src="https://championshipchains.com/cdn/shop/files/726963338_18329732464251882_7189758927221654551_n.jpg?v=1786015366&width=1000" alt="Champion Moment: fantasy football champion with chain" width="400" height="500" loading="lazy"></a>
+      <a data-cap="Wrestler with championship chain" href="https://championshipchains.com/pages/our-family"><img src="https://championshipchains.com/cdn/shop/files/560360194_18295770790251882_2067077692590798460_n.jpg?v=1786015365&width=1000" alt="Champion Moment: wrestler with championship chain" width="400" height="500" loading="lazy"></a>
+      <a data-cap="Coach with custom chain" href="https://championshipchains.com/pages/our-family"><img src="https://championshipchains.com/cdn/shop/files/619140599_17983620923951385_1092097088650053000_n.jpg?v=1786015365&width=1000" alt="Champion Moment: coach with custom chain" width="400" height="500" loading="lazy"></a>
+      <a data-cap="Organization awarding chains" href="https://championshipchains.com/pages/our-family"><img src="https://championshipchains.com/cdn/shop/files/491167099_18277479973251882_1081488966773889300_n.jpg?v=1786015365&width=1000" alt="Champion Moment: organization awarding chains" width="400" height="500" loading="lazy"></a>
+      <a data-cap="Champion showing off a chain" href="https://championshipchains.com/pages/our-family"><img src="https://championshipchains.com/cdn/shop/files/611774660_18307944100251882_1818532093318471871_n.jpg?v=1786015365&width=1000" alt="Champion Moment: champion showing off a chain" width="400" height="500" loading="lazy"></a>
+    </div>
+    <div class="btn-row" style="justify-content:center">
+      <a class="btn btn-primary" href="https://championshipchains.com/pages/our-family">See The Full Gallery</a>
+      <a class="btn btn-ghost" href="https://championshipchains.com/pages/fully-custom-vs-custom-stock-chains">Design Your Chain</a>
+      <a class="btn btn-ghost" data-cta="wall-submit" href="mailto:championshipchains@gmail.com?subject=My%20Championship%20Chains%20photo&amp;body=Hi%2C%20here%20is%20my%20photo%20wearing%20my%20chain.">Submit Your Photo</a>
+    </div>
   </div>
 </section>
 
@@ -851,7 +899,6 @@ html.js [data-rv].in{opacity:1;transform:none}
     <div class="faq-grid">
       <div class="faq-photo"><img src="https://championshipchains.com/cdn/shop/files/563337901_18296198044251882_8432656263622514183_n.jpg?v=1786015365&width=1000" alt="Happy customer with a Championship Chains custom chain" width="800" height="1000" loading="lazy"></div>
       <div>
-        <div class="qk"><span><b>5–7 days</b>Stock chains</span><span><b>3–4 weeks</b>Fully custom</span><span><b>$450–$1,300</b>Custom price range</span><span><b>$16.99</b>UPS Ground example, insured</span></div>
         <details name="faq" open><summary>How long does production take?</summary><p>05-07 business days for normal production. For a rush fee we can make it within 02-03 business days and ship!</p></details>
         <details name="faq"><summary>Can my graphics be etched into the stock chain?</summary><p>No, we don't offer that on our stocks. All graphic work is a vinyl on top of the metal.</p></details>
         <details name="faq"><summary>How long to make a fully custom premier chain?</summary><p>After artwork is approved and the deposit is received (1/2 of the invoice to start production), normally 03-04 weeks. Not 12 weeks like other "companies."</p></details>
@@ -1059,12 +1106,37 @@ html.js [data-rv].in{opacity:1;transform:none}
     /* stat counters: only pure numbers like 15+ and 4.5★ */
     var co=new IntersectionObserver(function(es){es.forEach(function(e){
       if(!e.isIntersecting)return;var b=e.target;co.unobserve(b);
-      var m=b.textContent.trim().match(/^(\d+(?:\.\d+)?)([+★]?)$/);if(!m)return;
-      var end=parseFloat(m[1]),dec=(m[1].split('.')[1]||'').length,suf=m[2],t0=performance.now(),dur=1200;
-      (function step(t){var k=Math.min(1,(t-t0)/dur),v=end*(1-Math.pow(1-k,3));b.textContent=v.toFixed(dec)+suf;if(k<1)requestAnimationFrame(step);})(t0);
+      var m=b.textContent.trim().match(/^(\d[\d,]*(?:\.\d+)?)([+★]?)$/);if(!m)return;
+      var end=parseFloat(m[1].replace(/,/g,'')),dec=(m[1].split('.')[1]||'').length,suf=m[2],t0=performance.now(),dur=1200;
+      (function step(t){var k=Math.min(1,(t-t0)/dur),v=end*(1-Math.pow(1-k,3));b.textContent=(m[1].indexOf(',')>-1?Math.round(v).toLocaleString('en-US'):v.toFixed(dec))+suf;if(k<1)requestAnimationFrame(step);})(t0);
     });},{threshold:.6});
     document.querySelectorAll('.stats b').forEach(function(b){co.observe(b);});
   }catch(err){root.classList.remove('js');document.querySelectorAll('[data-rv]').forEach(function(el){el.removeAttribute('data-rv');});}
+})();
+</script>
+<script>
+/* Craft story: pins the section and slides the track sideways as the page scrolls down */
+(function(){
+  var h=document.getElementById('craft-hscroll');
+  if(!h||(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches))return;
+  var st=h.querySelector('.hs-sticky'),tr=h.querySelector('.hs-track'),dist=0,tick=false;
+  function update(){
+    tick=false;
+    var r=h.getBoundingClientRect(),max=h.offsetHeight-st.offsetHeight;
+    var p=max>0?Math.min(1,Math.max(0,-r.top/max)):0;
+    tr.style.transform='translate3d('+(-p*dist).toFixed(1)+'px,0,0)';
+  }
+  function measure(){
+    dist=Math.max(0,tr.offsetWidth-document.documentElement.clientWidth);
+    h.style.height=(dist+st.offsetHeight)+'px';
+    update();
+  }
+  h.classList.add('hs-on');
+  measure();
+  window.addEventListener('load',measure);
+  window.addEventListener('resize',measure);
+  window.addEventListener('scroll',function(){if(!tick){tick=true;requestAnimationFrame(update);}},{passive:true});
+  if('ResizeObserver' in window)new ResizeObserver(measure).observe(tr);
 })();
 </script>
 </body>
