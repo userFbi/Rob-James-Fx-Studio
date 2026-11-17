@@ -449,9 +449,44 @@ footer a:hover{color:var(--gold)}
 .faq-card a:not(.btn){color:var(--gold-soft);font-weight:700;text-decoration:none}
 .faq-card .btn{justify-self:start;margin-top:8px}
 .lim-pill{display:inline-block;margin:0 0 14px;padding:6px 12px;border-radius:999px;background:rgba(242,169,0,.14);border:1px solid var(--gold);color:var(--gold-soft);font:700 .72rem var(--body);letter-spacing:.12em;text-transform:uppercase}
+
+/* ===== ANIMATIONS (transform/opacity only, no layout shift) ===== */
+@keyframes ccIn{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+@keyframes ccZoom{from{transform:scale(1.08)}to{transform:scale(1)}}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(242,169,0,.55)}70%,100%{box-shadow:0 0 0 18px rgba(242,169,0,0)}}
+@keyframes floatFrame{0%,100%{translate:0 0}50%{translate:0 -10px}}
+@keyframes faqIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+.cc-hero .cc-w>*{animation:ccIn .7s cubic-bezier(.2,.7,.2,1) both}
+.cc-hero .cc-w>:nth-child(2){animation-delay:.12s}.cc-hero .cc-w>:nth-child(3){animation-delay:.24s}.cc-hero .cc-w>:nth-child(4){animation-delay:.36s}.cc-hero .cc-w>:nth-child(5){animation-delay:.48s}
+.cc-hero .cc-bg{animation:ccZoom 1.8s cubic-bezier(.2,.7,.2,1) both}
+.cc-cta .btn-primary{animation:pulse 2.8s ease-out 2.2s infinite}
+.cc-cta .btn-primary:hover{animation:none}
+.btn{position:relative;overflow:hidden}
+.btn-primary::after{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 30%,rgba(255,255,255,.5) 50%,transparent 70%);transform:translateX(-130%);pointer-events:none}
+.btn-primary:hover::after{transform:translateX(130%);transition:transform .7s}
+.cc-top{transition:box-shadow .3s}
+.cc-top .cc-w{transition:min-height .25s}.cc-logo img{transition:height .25s}
+.cc-top.scrolled{box-shadow:0 10px 30px rgba(0,0,0,.55)}
+.cc-top.scrolled .cc-w{min-height:58px}.cc-top.scrolled .cc-logo img{height:38px}
+.progress{position:fixed;left:0;top:0;height:3px;width:100%;background:var(--gold);transform:scaleX(0);transform-origin:0 50%;z-index:100;pointer-events:none}
+.products .card,.pcard,.bento .tile{transition:transform .3s,box-shadow .3s,border-color .3s}
+.products .card:hover,.pcard:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(0,0,0,.35)}
+.card .pic,.bento .tile,.wall a{overflow:hidden}
+.card .pic img,.bento .tile img,.wall img{transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.card:hover .pic img,.bento .tile:hover img,.wall a:hover img{transform:scale(1.06)}
+.chips a:hover{transform:translateY(-2px)}
+.line .dot{transition:transform .3s}.line li:hover .dot{transform:scale(1.1) rotate(-4deg)}
+.cotm-pic{animation:floatFrame 6s ease-in-out infinite}
+details[open]>p{animation:faqIn .35s ease both}
+html.js [data-rv]{opacity:0;transform:translateY(28px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1);transition-delay:var(--d,0s)}
+html.js [data-rv=zoom]{transform:scale(.94)}
+html.js [data-rv].in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.cc-hero .cc-w>*,.cc-hero .cc-bg,.cotm-pic,.cc-cta .btn-primary,details[open]>p{animation:none!important}.progress{display:none}}
 </style>
+<script>try{if("IntersectionObserver"in window&&!matchMedia("(prefers-reduced-motion: reduce)").matches)document.documentElement.className+=" js"}catch(e){}</script>
 </head>
 <body>
+<div class="progress" aria-hidden="true"></div>
 
 <!-- ===== v8 header + hero (namespaced cc-) ===== -->
 <header class="cc-top"><div class="cc-w"><a class="cc-logo" href="https://championshipchains.com/" aria-label="Championship Chains home"><img src="https://championshipchains.com/cdn/shop/files/logo_1.png?v=1781871265&width=200" alt="Championship Chains logo" height="44"></a>
@@ -986,6 +1021,50 @@ footer a:hover{color:var(--gold)}
     }
     box.classList.add('is-playing');box.appendChild(el);btn.remove();
   });
+})();
+</script>
+
+<script>
+(function(){
+  var root=document.documentElement,hasJS=root.classList.contains('js');
+  /* header shrink + scroll progress */
+  var top=document.querySelector('.cc-top'),bar=document.querySelector('.progress'),tick=false;
+  function onScroll(){
+    var y=window.scrollY||0,h=document.documentElement.scrollHeight-innerHeight;
+    if(top)top.classList.toggle('scrolled',y>40);
+    if(bar&&h>0)bar.style.transform='scaleX('+Math.min(1,y/h)+')';
+    tick=false;
+  }
+  window.addEventListener('scroll',function(){if(!tick){tick=true;requestAnimationFrame(onScroll);}},{passive:true});
+  onScroll();
+  if(!hasJS)return;
+  try{
+    /* scroll reveal with stagger */
+    var groups=[['.stats>div',''],['.center>.eyebrow',''],['.center>h2',''],['.center>.lede',''],['.stock-head>div:first-child',''],['.video',''],['.faq-head',''],
+      ['.path-grid>.pcard',''],['.chips a',''],['.products .card',''],['.review-bar',''],['.bento .tile','zoom'],['.why-photo','zoom'],['.why-list li',''],
+      ['.craft-head',''],['.row .rimg','zoom'],['.row .rtxt',''],['.legacy',''],['.line li',''],['.wall a','zoom'],['.cotm-pic','zoom'],['.cotm-grid>div:last-child',''],
+      ['.versus .vs',''],['.fb figure',''],['.faq-photo','zoom'],['.faq-grid details',''],['.faq-card',''],['.final .wrap>*','']];
+    var seen=new Map(),els=[];
+    groups.forEach(function(g){document.querySelectorAll(g[0]).forEach(function(el){
+      if(el.closest('.cc-hero,.cc-top')||el.hasAttribute('data-rv'))return;
+      var par=el.parentNode,n=seen.get(par)||0;seen.set(par,n+1);
+      el.setAttribute('data-rv',g[1]);el.style.setProperty('--d',(Math.min(n,6)*0.08).toFixed(2)+'s');els.push(el);
+    });});
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){
+      if(!e.isIntersecting)return;var el=e.target;io.unobserve(el);el.classList.add('in');
+      /* once revealed, hand control back to the element's own hover styles */
+      setTimeout(function(){el.removeAttribute('data-rv');el.classList.remove('in');el.style.removeProperty('--d');},1200);
+    });},{threshold:.12,rootMargin:'0px 0px -6% 0px'});
+    els.forEach(function(el){io.observe(el);});
+    /* stat counters: only pure numbers like 15+ and 4.5★ */
+    var co=new IntersectionObserver(function(es){es.forEach(function(e){
+      if(!e.isIntersecting)return;var b=e.target;co.unobserve(b);
+      var m=b.textContent.trim().match(/^(\d+(?:\.\d+)?)([+★]?)$/);if(!m)return;
+      var end=parseFloat(m[1]),dec=(m[1].split('.')[1]||'').length,suf=m[2],t0=performance.now(),dur=1200;
+      (function step(t){var k=Math.min(1,(t-t0)/dur),v=end*(1-Math.pow(1-k,3));b.textContent=v.toFixed(dec)+suf;if(k<1)requestAnimationFrame(step);})(t0);
+    });},{threshold:.6});
+    document.querySelectorAll('.stats b').forEach(function(b){co.observe(b);});
+  }catch(err){root.classList.remove('js');document.querySelectorAll('[data-rv]').forEach(function(el){el.removeAttribute('data-rv');});}
 })();
 </script>
 </body>
