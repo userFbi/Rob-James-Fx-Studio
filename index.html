@@ -25,8 +25,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://championshipchains.com">
-<link rel="preload" as="image" href="https://championshipchains.com/cdn/shop/files/image_85.png?v=1783021987&width=1100" fetchpriority="high">
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;800;900&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <script type="application/ld+json">
@@ -383,46 +381,74 @@ footer a:hover{color:var(--gold)}
 
 /* mobile dock */
 .dock{position:fixed;left:0;right:0;bottom:0;z-index:60;display:flex;gap:10px;padding:10px max(16px,env(safe-area-inset-right,0px)) calc(10px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));background:rgba(11,9,7,.96);border-top:1px solid var(--line)}
-.dock .btn{flex:1;min-height:48px;padding:0 10px}
-@media(min-width:960px){.dock{display:none}footer{padding-bottom:60px}}
+.dock .btn{flex:1;min-height:48px;padding:0 8px;font-size:.76rem;letter-spacing:.04em;white-space:nowrap}
+@media(min-width:960px){.dock{display:none}}
 @media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
 
 /* ===== v8 header + hero ===== */
-.cc-top,.cc-hero,.cc-tick{--k:#0b0b0c;--y:#ffc61a;--w:#f6f4ee;--ln:#2a2a2d;font-family:Inter,system-ui,sans-serif;line-height:1.6}
-.cc-top *,.cc-hero *,.cc-tick *{box-sizing:border-box}
-.cc-top{position:sticky;top:0;z-index:50;background:#0b0b0cee;backdrop-filter:blur(10px);border-bottom:1px solid var(--ln);color:var(--w)}
-.cc-top a,.cc-hero a{text-decoration:none;color:inherit}
-.cc-w{max-width:1240px;margin:0 auto;padding:0 20px}
-.cc-top .cc-w{display:flex;justify-content:space-between;align-items:center;height:66px;gap:20px}
-.cc-logo img{height:44px;width:auto;display:block}.cc-top .cc-btn{white-space:nowrap}
-.cc-top nav{display:flex;gap:28px;font:600 13px Archivo,sans-serif;text-transform:uppercase;letter-spacing:.08em;margin:0 auto}
-.cc-top nav a{color:var(--w)}.cc-top nav a:hover{color:var(--y)}
-.cc-btn{display:inline-flex;align-items:center;gap:10px;padding:16px 28px;font:800 14px Archivo,sans-serif;text-transform:uppercase;letter-spacing:.06em;background:var(--y);color:#000!important;border:0;box-shadow:inset 0 0 0 2px var(--y);clip-path:polygon(10px 0,100% 0,calc(100% - 10px) 100%,0 100%);transition:.2s;cursor:pointer}
-.cc-btn:hover{background:var(--w);box-shadow:inset 0 0 0 2px var(--w)}
-.cc-btn.cc-g{background:var(--w);box-shadow:inset 0 0 0 2px var(--w)}
-.cc-btn.cc-g:hover{background:var(--y);box-shadow:inset 0 0 0 2px var(--y)}
-.cc-top .cc-btn{padding:11px 20px;font-size:12px}
-@media(max-width:860px){.cc-top nav{display:none}}
-.cc-hero{position:relative;display:flex;align-items:center;overflow:hidden;padding:0;min-height:clamp(560px,calc(100vh - 66px),820px);background:#0b0b0c;color:var(--w)}
+.cc-top{position:sticky;top:0;z-index:50;background:rgba(11,9,7,.9);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.cc-w{max-width:var(--max);margin:0 auto;padding-inline:max(16px,env(safe-area-inset-left,0px))}
+.cc-top .cc-w{display:flex;align-items:center;gap:20px;min-height:68px}
+.cc-logo img{height:44px;width:auto;display:block}
+.cc-top nav{display:none;gap:24px;margin-left:auto;font-size:.88rem}
+.cc-top nav a{text-decoration:none;color:var(--muted)}
+.cc-top nav a:hover{color:var(--gold)}
+.cc-phone{display:none;font-weight:700;text-decoration:none;white-space:nowrap}
+.cc-top .btn{margin-left:auto;white-space:nowrap}
+@media(min-width:960px){.cc-top nav{display:flex;margin:0 auto}.cc-top .btn{margin-left:0}.cc-phone{display:block}}
+@media(min-width:1180px){.cc-top .cc-w{position:relative}.cc-top nav{position:absolute;left:50%;transform:translateX(-50%);margin:0}.cc-phone{margin-left:auto}}
+.cc-hero{position:relative;display:flex;align-items:center;overflow:hidden;min-height:clamp(560px,calc(100vh - 68px),820px);background:var(--ink)}
 .cc-hero .cc-bg{position:absolute;top:0;bottom:0;right:0;left:auto;width:58%;height:100%;object-fit:cover;object-position:center 10%;max-width:none}
-.cc-hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#0b0b0c 36%,#0b0b0c00 62%),linear-gradient(0deg,#0b0b0c 0,#0b0b0c00 22%)}
-.cc-hero .cc-w{position:relative;z-index:2;width:100%;padding-top:70px;padding-bottom:70px}
-.cc-hero .cc-w>*{max-width:560px}
-.cc-tag{display:inline-block;background:var(--y);color:#000;font:800 12px Archivo,sans-serif;letter-spacing:.14em;text-transform:uppercase;padding:5px 12px;transform:skew(-10deg)}
-.cc-hero h1{font:900 clamp(38px,5.4vw,82px)/.98 Archivo,Impact,sans-serif;text-transform:uppercase;letter-spacing:-.01em;text-wrap:wrap;margin:18px 0 20px;color:var(--w)}
-.cc-hero h1 em{font-style:normal;color:var(--y);display:inline}
-.cc-hero p{font-size:17px;color:#d8d6cd;margin:0 0 30px;max-width:520px}
-.cc-cta{display:flex;gap:14px;flex-wrap:wrap}
+.cc-hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--ink) 36%,rgba(11,9,7,0) 62%),linear-gradient(0deg,var(--ink) 0,rgba(11,9,7,0) 22%)}
+.cc-hero .cc-w{position:relative;z-index:2;width:100%;padding-block:70px}
+.cc-hero .cc-w>*{max-width:580px}
+.cc-tag{display:inline-block;padding:7px 14px;border:1px solid var(--gold);border-radius:999px;background:rgba(242,169,0,.12);color:var(--gold-soft);font:700 .72rem/1 var(--body);letter-spacing:.14em;text-transform:uppercase}
+.cc-hero h1{margin:20px 0 18px;font-size:clamp(2.8rem,6.4vw,5.6rem)}
+.cc-hero p{color:var(--muted);max-width:52ch}
+.cc-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.cc-micro{display:flex;flex-wrap:wrap;gap:6px 18px;margin:20px 0 0;padding:0;list-style:none;font:600 .8rem var(--body);color:var(--muted)}
+.cc-micro li:before{content:"✓";color:var(--gold);font-weight:800;margin-right:6px}
 @media(max-width:860px){
 .cc-hero{display:block;min-height:0}
 .cc-hero .cc-bg{width:100%;height:100vw;max-height:520px;object-position:center top}
-.cc-hero::after{background:linear-gradient(0deg,#0b0b0c 0,#0b0b0c 40%,#0b0b0c00 70%)}
+.cc-hero::after{background:linear-gradient(0deg,var(--ink) 0,var(--ink) 40%,rgba(11,9,7,0) 70%)}
 .cc-hero .cc-w{padding-top:min(86vw,450px);padding-bottom:44px}
-.cc-hero .cc-w>*{max-width:none}}
-.cc-tick{background:var(--y);color:#000;overflow:hidden;white-space:nowrap;padding:14px 0;font:900 18px Archivo,sans-serif;text-transform:uppercase}
-.cc-tick div{display:inline-block;animation:ccm 30s linear infinite}.cc-tick span{margin:0 26px}
-@keyframes ccm{to{transform:translateX(-50%)}}
-@media(prefers-reduced-motion:reduce){.cc-tick div{animation:none}}
+.cc-hero .cc-w>*{max-width:none}.cc-tag{font-size:.64rem;letter-spacing:.08em;padding:7px 12px}}
+
+/* ===== CRO additions ===== */
+.path{background:var(--panel);border-block:1px solid var(--line);padding-block:clamp(40px,5vw,70px)}
+.path h2{text-align:center;margin:0 0 8px}
+.path .sub{text-align:center;color:var(--muted);margin:0 auto 28px;max-width:560px}
+.path-grid{display:grid;gap:18px;grid-template-columns:1fr}
+@media(min-width:760px){.path-grid{grid-template-columns:1fr 1fr}}
+.pcard{background:var(--panel-2);border:1px solid var(--line);border-radius:18px;padding:26px;display:flex;flex-direction:column;gap:12px}
+.pcard.hot{border-color:var(--gold);box-shadow:0 0 0 1px var(--gold) inset}
+.pcard .tagline{font:700 .72rem var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+.pcard h3{margin:0;font:800 1.9rem/1 var(--display);text-transform:uppercase}
+.pcard .price{font:800 1.5rem var(--display);color:var(--gold-soft)}
+.pcard ul{margin:0;padding:0;list-style:none;color:var(--muted);display:grid;gap:6px;font-size:.95rem}
+.pcard li:before{content:"✓";color:var(--gold);margin-right:8px;font-weight:800}
+.pcard .btn{margin-top:auto}
+.help-line{margin-top:22px;color:var(--muted);font-size:.95rem;text-align:center}
+.help-line a{color:var(--gold-soft);font-weight:700}
+@media(max-width:959px){body{padding-bottom:76px}}
+
+/* ===== v2 additions ===== */
+@keyframes scroll{to{transform:translateX(-50%)}}
+.chips{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:30px}
+.chips a{padding:10px 18px;border:1px solid var(--line);border-radius:999px;color:var(--text);text-decoration:none;font:700 .8rem var(--body);letter-spacing:.08em;text-transform:uppercase;background:var(--panel-2);transition:.2s}
+.chips a:hover{border-color:var(--gold);color:var(--gold)}
+.chips-label{text-align:center;margin:30px 0 0;color:var(--muted);font:700 .75rem var(--body);letter-spacing:.14em;text-transform:uppercase}
+.qk{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:18px}
+@media(min-width:700px){.qk{grid-template-columns:repeat(4,1fr)}}
+.qk span{background:var(--panel-2);border:1px solid var(--line);border-radius:12px;padding:12px;text-align:center;color:var(--muted);font-size:.78rem;line-height:1.3}
+.qk b{display:block;color:var(--gold-soft);font:800 1.25rem var(--display);letter-spacing:.02em}
+.faq-card{margin-top:22px;background:var(--panel-2);border:1px solid var(--line);border-radius:16px;padding:22px;display:grid;gap:8px}
+.faq-card h3{margin:0;font:800 1.4rem var(--display);text-transform:uppercase}
+.faq-card p{margin:0;color:var(--muted)}
+.faq-card a:not(.btn){color:var(--gold-soft);font-weight:700;text-decoration:none}
+.faq-card .btn{justify-self:start;margin-top:8px}
+.lim-pill{display:inline-block;margin:0 0 14px;padding:6px 12px;border-radius:999px;background:rgba(242,169,0,.14);border:1px solid var(--gold);color:var(--gold-soft);font:700 .72rem var(--body);letter-spacing:.12em;text-transform:uppercase}
 </style>
 </head>
 <body>
@@ -430,7 +456,7 @@ footer a:hover{color:var(--gold)}
 <!-- ===== v8 header + hero (namespaced cc-) ===== -->
 <header class="cc-top"><div class="cc-w"><a class="cc-logo" href="https://championshipchains.com/" aria-label="Championship Chains home"><img src="https://championshipchains.com/cdn/shop/files/logo_1.png?v=1781871265&width=200" alt="Championship Chains logo" height="44"></a>
 <nav aria-label="Main"><a href="https://championshipchains.com/collections/stock">Stock</a><a href="https://championshipchains.com/collections/custom">Custom</a><a href="https://championshipchains.com/collections/premier">Showroom</a><a href="https://championshipchains.com/pages/our-family">Gallery</a><a href="https://championshipchains.com/pages/contact">Contact</a></nav>
-<a class="cc-btn" href="https://championshipchains.com/pages/fully-custom-vs-custom-stock-chains">Design Yours</a></div></header>
+<a class="cc-phone" href="tel:4193294713">419-329-4713</a><a class="btn btn-primary btn-sm" href="https://championshipchains.com/pages/fully-custom-vs-custom-stock-chains">Design Yours</a></div></header>
 
 <main>
 
@@ -439,7 +465,8 @@ footer a:hover{color:var(--gold)}
 <div class="cc-w"><span class="cc-tag">★ 4.5 rated by champions · Made in the USA</span>
 <h1>Custom Championship Chains <em>Built For Champions</em></h1>
 <p>Premium custom championship chains designed for sports teams, brands, events, influencers, and organizations that want unforgettable recognition.</p>
-<div class="cc-cta"><a class="cc-btn" href="https://championshipchains.com/pages/fully-custom-vs-custom-stock-chains">Design Your Chain →</a><a class="cc-btn cc-g" href="https://championshipchains.com/collections/stock">Shop Ready-to-Ship</a></div></div></section>
+<div class="cc-cta"><a class="btn btn-primary" href="https://championshipchains.com/pages/fully-custom-vs-custom-stock-chains">Design Your Chain</a><a class="btn btn-ghost" href="https://championshipchains.com/collections/stock">Shop Ready-to-Ship</a></div>
+<ul class="cc-micro"><li>Unlimited design revisions</li><li>Stock ships in 5–7 business days</li><li>Insured shipping</li></ul></div></section>
 <!-- 7 STAT BAND -->
 <div class="band" role="region" aria-label="Championship Chains at a glance">
   <div class="wrap stats">
@@ -449,6 +476,34 @@ footer a:hover{color:var(--gold)}
     <div><b>3-4 Wks</b><span>Fully Custom Turnaround</span></div>
   </div>
 </div>
+
+
+<!-- CRO: PICK YOUR PATH -->
+<section class="path" aria-labelledby="path">
+  <div class="wrap">
+    <h2 id="path">Pick Your <em>Path</em></h2>
+    <p class="sub">Need it fast, or want it built from scratch? Choose what fits your timeline and budget.</p>
+    <div class="path-grid">
+      <div class="pcard">
+        <span class="tagline">Fastest</span>
+        <h3>Stock Chains</h3>
+        <div class="price">From $159</div>
+        <ul><li>Ready-made designs, custom vinyl graphics</li><li>5–7 business days (rush 2–3 days available)</li><li>Insured UPS shipping, e.g. Ground from $16.99</li></ul>
+        <a class="btn btn-primary" data-cta="path-stock" href="https://championshipchains.com/collections/stock">Shop Stock Chains</a>
+      </div>
+      <div class="pcard hot">
+        <span class="tagline">Most Popular For Teams</span>
+        <h3>Fully Custom Chains</h3>
+        <div class="price">$450 – $1,300</div>
+        <ul><li>Designed from scratch with our artists</li><li>3–4 weeks after art approval and deposit</li><li>Unlimited revisions until you approve</li></ul>
+        <a class="btn btn-primary" data-cta="path-custom" href="https://championshipchains.com/pages/fully-custom-vs-custom-stock-chains">Start My Custom Design</a>
+      </div>
+    </div>
+    <p class="chips-label">Or shop by sport</p>
+    <div class="chips"><a data-cta="sport-football" href="https://championshipchains.com/collections/football">Football</a><a data-cta="sport-basketball" href="https://championshipchains.com/collections/basketball">Basketball</a><a data-cta="sport-wrestling" href="https://championshipchains.com/collections/wrestling">Wrestling</a><a data-cta="sport-baseball" href="https://championshipchains.com/collections/baseball">Baseball</a><a data-cta="sport-hockey" href="https://championshipchains.com/collections/hockey">Hockey</a><a data-cta="sport-mma" href="https://championshipchains.com/collections/mma">MMA</a><a data-cta="sport-golf" href="https://championshipchains.com/collections/golf">Golf</a><a data-cta="sport-fitness" href="https://championshipchains.com/collections/fitness">Fitness</a><a data-cta="sport-sale" href="https://championshipchains.com/collections/sale">Sale</a></div>
+    <p class="help-line">Not sure which one? <a href="tel:4193294713" data-cta="path-call">Call 419-329-4713</a> or <a href="https://championshipchains.com/pages/contact" data-cta="path-quote">request a quote</a>.</p>
+  </div>
+</section>
 
 <!-- 3 STOCK CHAINS + VIDEO -->
 <section aria-labelledby="stock">
@@ -461,7 +516,7 @@ footer a:hover{color:var(--gold)}
       </div>
       <div class="btn-row"><a class="btn btn-primary" href="https://championshipchains.com/collections/premier">View All Chains</a></div>
     </div>
-    <div class="video" id="stock-video" data-youtube="https://youtu.be/MS-k0tDCqws?si=SqCNB58FLQH_Wejx" data-mp4="https://youtu.be/MS-k0tDCqws?si=SqCNB58FLQH_Wejx">
+    <div class="video" id="stock-video" data-youtube="MS-k0tDCqws">
       <img src="https://championshipchains.com/cdn/shop/files/Image_5_46740a51-14a0-45ce-89e3-fce208e8b0bf.png?v=1782238257&width=1600" alt="Championship Chains video thumbnail" width="1600" height="900" loading="lazy">
       <button class="play" type="button" aria-label="Play video: Championship Chains, premium quality, built for champions"><svg viewBox="0 0 24 24" width="38" height="38" aria-hidden="true"><path d="M8 5v14l11-7z" fill="#1a1200"/></svg></button>
     </div>
@@ -506,19 +561,19 @@ footer a:hover{color:var(--gold)}
     <div class="products">
       <article class="card">
         <a class="pic" href="https://championshipchains.com/products/hermes-gold-championship-chain"><img src="https://championshipchains.com/cdn/shop/files/image_5_1.webp?v=1786355533&width=533" alt="Hermes Gold Championship Chain" width="533" height="533" loading="lazy"><span class="chip">Gold</span></a>
-        <div class="info"><h3><a href="https://championshipchains.com/products/hermes-gold-championship-chain">Hermes Gold Championship Chain</a></h3><p class="meta">7.5" all-metal chestplate. No plastics. Chain connects at the top.</p><p class="price"><small>Starting at</small>$169.00</p><a class="btn btn-primary btn-sm" href="https://championshipchains.com/products/hermes-gold-championship-chain">Build Now</a></div>
+        <div class="info"><h3><a href="https://championshipchains.com/products/hermes-gold-championship-chain">Hermes Gold Championship Chain</a></h3><p class="meta">7.5" all-metal chestplate. No plastics. Chain connects at the top.</p><p class="price"><small>Starting at</small>$169.00</p><a class="btn btn-primary btn-sm" href="https://championshipchains.com/products/hermes-gold-championship-chain">Shop This Chain</a></div>
       </article>
       <article class="card">
         <a class="pic" href="https://championshipchains.com/products/hermes-silver-championship-chain"><img src="https://championshipchains.com/cdn/shop/files/image_1_1.webp?v=1786420645&width=533" alt="Hermes Silver Championship Chain" width="533" height="533" loading="lazy"><span class="chip">Silver</span></a>
-        <div class="info"><h3><a href="https://championshipchains.com/products/hermes-silver-championship-chain">Hermes Silver Championship Chain</a></h3><p class="meta">7.5" all-metal chestplate. No plastics. Chain connects at the top.</p><p class="price"><small>Starting at</small>$159.00</p><a class="btn btn-primary btn-sm" href="https://championshipchains.com/products/hermes-silver-championship-chain">Build Now</a></div>
+        <div class="info"><h3><a href="https://championshipchains.com/products/hermes-silver-championship-chain">Hermes Silver Championship Chain</a></h3><p class="meta">7.5" all-metal chestplate. No plastics. Chain connects at the top.</p><p class="price"><small>Starting at</small>$159.00</p><a class="btn btn-primary btn-sm" href="https://championshipchains.com/products/hermes-silver-championship-chain">Shop This Chain</a></div>
       </article>
       <article class="card">
         <a class="pic" href="https://championshipchains.com/products/mvp-fantasy-football-championship-chain"><img src="https://championshipchains.com/cdn/shop/files/image_2.webp?v=1793275818&width=533" alt="MVP Fantasy Football Gold Championship Chain" width="533" height="533" loading="lazy"><span class="chip">Gold</span></a>
-        <div class="info"><h3><a href="https://championshipchains.com/products/mvp-fantasy-football-championship-chain">MVP Fantasy Football Gold Championship Chain</a></h3><p class="meta">Solid brass medallion, gold chain. Turnaround 10-14 days.</p><p class="price"><small>Starting at</small>$199.99</p><a class="btn btn-primary btn-sm" href="https://championshipchains.com/products/mvp-fantasy-football-championship-chain">Build Now</a></div>
+        <div class="info"><h3><a href="https://championshipchains.com/products/mvp-fantasy-football-championship-chain">MVP Fantasy Football Gold Championship Chain</a></h3><p class="meta">Solid brass medallion, gold chain. Turnaround 10-14 days.</p><p class="price"><small>Starting at</small>$199.99</p><a class="btn btn-primary btn-sm" href="https://championshipchains.com/products/mvp-fantasy-football-championship-chain">Shop This Chain</a></div>
       </article>
       <article class="card">
         <a class="pic" href="https://championshipchains.com/products/mvp-fantasy-football-silver-championship-chain"><img src="https://championshipchains.com/cdn/shop/files/image_2_1_1.webp?v=1786423034&width=533" alt="MVP Fantasy Football Silver Championship Chain" width="533" height="533" loading="lazy"><span class="chip">Silver</span></a>
-        <div class="info"><h3><a href="https://championshipchains.com/products/mvp-fantasy-football-silver-championship-chain">MVP Fantasy Football Silver Championship Chain</a></h3><p class="meta">Solid brass medallion, silver chain. Turnaround 10-14 days.</p><p class="price"><small>Starting at</small>$159.00</p><a class="btn btn-primary btn-sm" href="https://championshipchains.com/products/mvp-fantasy-football-silver-championship-chain">Build Now</a></div>
+        <div class="info"><h3><a href="https://championshipchains.com/products/mvp-fantasy-football-silver-championship-chain">MVP Fantasy Football Silver Championship Chain</a></h3><p class="meta">Solid brass medallion, silver chain. Turnaround 10-14 days.</p><p class="price"><small>Starting at</small>$159.00</p><a class="btn btn-primary btn-sm" href="https://championshipchains.com/products/mvp-fantasy-football-silver-championship-chain">Shop This Chain</a></div>
       </article>
     </div>
     <div class="review-bar">
@@ -658,7 +713,7 @@ footer a:hover{color:var(--gold)}
   <div class="wrap cotm-grid">
     <div class="cotm-pic"><img src="https://championshipchains.com/cdn/shop/files/Kratos_Spinner.webp?v=1783583630&width=900" alt="Kratos Gold Spinner Championship Chain" width="900" height="900" loading="lazy"></div>
     <div>
-      <span class="eyebrow">Exclusive Feature</span>
+      <span class="lim-pill">Limited quantities · new chain every month</span><br><span class="eyebrow">Exclusive Feature</span>
       <h2 id="cotm">Chain <em>Of The Month</em></h2>
       <h3 class="name">Kratos Gold Spinner Championship Chain</h3>
       <p class="lede">Designed for champions who lead the game. The Kratos Gold Spinner Championship Chain represents dedication, skill, and victory. Crafted with precision and finished with premium details, this chain is more than jewelry. It's a statement of legacy.</p>
@@ -669,7 +724,7 @@ footer a:hover{color:var(--gold)}
         <li><div><b>Fast Turnaround</b><small>Receive your custom chain faster than ever.</small></div></li>
       </ul>
       <div class="btn-row">
-        <a class="btn btn-primary" href="https://championshipchains.com/products/kratos-spinner">View Full Details</a>
+        <a class="btn btn-primary" href="https://championshipchains.com/products/kratos-spinner">Shop The Kratos Spinner</a>
         <a class="btn btn-ghost" href="https://championshipchains.com/collections/stock">Explore More</a>
       </div>
     </div>
@@ -761,12 +816,13 @@ footer a:hover{color:var(--gold)}
     <div class="faq-grid">
       <div class="faq-photo"><img src="https://championshipchains.com/cdn/shop/files/563337901_18296198044251882_8432656263622514183_n.jpg?v=1786015365&width=1000" alt="Happy customer with a Championship Chains custom chain" width="800" height="1000" loading="lazy"></div>
       <div>
+        <div class="qk"><span><b>5–7 days</b>Stock chains</span><span><b>3–4 weeks</b>Fully custom</span><span><b>$450–$1,300</b>Custom price range</span><span><b>$16.99</b>UPS Ground example, insured</span></div>
         <details name="faq" open><summary>How long does production take?</summary><p>05-07 business days for normal production. For a rush fee we can make it within 02-03 business days and ship!</p></details>
         <details name="faq"><summary>Can my graphics be etched into the stock chain?</summary><p>No, we don't offer that on our stocks. All graphic work is a vinyl on top of the metal.</p></details>
         <details name="faq"><summary>How long to make a fully custom premier chain?</summary><p>After artwork is approved and the deposit is received (1/2 of the invoice to start production), normally 03-04 weeks. Not 12 weeks like other "companies."</p></details>
         <details name="faq"><summary>How much do fully custom premier chains cost?</summary><p>We can email you a price guide because there are lots of variations, but they range from $450 to $1300.</p></details>
         <details name="faq"><summary>How much for shipping?</summary><p>Shipping varies by destination, but it is low and insured. We are located in Ohio and generally ship UPS. For example, UPS Ground may only be $16.99 with insurance. We can also ship internationally with other carriers; just contact us for prices.</p></details>
-        <div class="faq-cta"><a class="btn btn-primary" href="https://championshipchains.com/pages/contact">Contact Our Team</a></div>
+        <div class="faq-card"><h3>Still have questions?</h3><p>Talk to our team before you order.</p><p><a href="tel:4193294713" data-cta="faq-call">☎ 419-329-4713</a><br><a href="mailto:championshipchains@gmail.com" data-cta="faq-email">✉ championshipchains@gmail.com</a></p><a class="btn btn-primary" data-cta="faq-contact" href="https://championshipchains.com/pages/contact">Contact Our Team</a></div>
       </div>
     </div>
   </div>
@@ -784,6 +840,7 @@ footer a:hover{color:var(--gold)}
       <a class="btn btn-primary" href="https://championshipchains.com/pages/fully-custom-vs-custom-stock-chains">Design Your Chain</a>
       <a class="btn btn-ghost" href="https://championshipchains.com/pages/contact">Request A Quote</a>
     </div>
+    <p class="help-line" style="margin-top:20px">Questions before you order? Call <a href="tel:4193294713" data-cta="final-call">419-329-4713</a>. Rush production (2–3 business days) available on stock chains.</p>
     <ul class="assure">
       <li><img src="https://championshipchains.com/cdn/shop/files/Frame_138.png?v=1782390561&width=80" alt="" width="26" height="26" loading="lazy">Premium Quality</li>
       <li><img src="https://championshipchains.com/cdn/shop/files/Frame_139.png?v=1782390561&width=80" alt="" width="26" height="26" loading="lazy">Fully Custom</li>
@@ -852,7 +909,7 @@ footer a:hover{color:var(--gold)}
 (function(){
   /* Stock Chains video plays on this page. Put your YouTube video ID in data-youtube
      (e.g. data-youtube="dQw4w9WgXcQ") or a direct file URL in data-mp4 on #stock-video. */
-  var box=document.getElementById('stock-video');
+  var box=null;
   if(box){
     var btn=box.querySelector('.play');
     btn.addEventListener('click',function(){
@@ -869,6 +926,66 @@ footer a:hover{color:var(--gold)}
   /* FAQ: only one answer open at a time (fallback for browsers without <details name>) */
   var ds=document.querySelectorAll('details[name="faq"]');
   ds.forEach(function(d){d.addEventListener('toggle',function(){if(d.open){ds.forEach(function(o){if(o!==d)o.open=false;});}});});
+})();
+</script>
+
+<script>
+/* CRO tracking: tags every CTA with its section, pushes to dataLayer (GTM) and gtag (GA4) */
+(function(){
+  window.dataLayer=window.dataLayer||[];
+  document.querySelectorAll('a.btn,a.pbtn,a[href^="tel:"],a[href^="mailto:"]').forEach(function(a){
+    if(!a.dataset.cta){var sec=a.closest('section,header,footer,.dock');a.dataset.cta=(sec&&(sec.getAttribute('aria-labelledby')||sec.className.split(' ')[0]||sec.tagName.toLowerCase()))||'page';}
+    a.addEventListener('click',function(){
+      var p={event:'cta_click',cta_id:a.dataset.cta,cta_text:(a.textContent||'').trim().slice(0,40),cta_url:a.getAttribute('href')};
+      window.dataLayer.push(p);
+      if(typeof gtag==='function')gtag('event','cta_click',p);
+    });
+  });
+  var seen={};
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){var id=e.target.getAttribute('aria-labelledby')||e.target.className;if(!seen[id]){seen[id]=1;window.dataLayer.push({event:'section_view',section:id});}}});},{threshold:.4});
+    document.querySelectorAll('main section').forEach(function(x){io.observe(x);});
+  }
+})();
+</script>
+
+<script>
+/* Marquee: clone logos until each track is wider than the screen, so the loop never shows an empty gap */
+(function(){
+  var m=document.querySelector('.marquee');if(!m)return;
+  var uls=m.querySelectorAll('ul');if(uls.length<2)return;
+  var base=Array.prototype.slice.call(uls[0].children).map(function(li){return li.cloneNode(true);});
+  function fill(){
+    uls[0].innerHTML='';uls[1].innerHTML='';
+    function add(){base.forEach(function(li,i){[uls[0],uls[1]].forEach(function(u,k){var c=li.cloneNode(true);if(k===1||u.children.length>=base.length){var im=c.querySelector('img');if(im)im.alt='';}u.appendChild(c);});});}
+    add();
+    var need=Math.max(window.innerWidth,1280)+400,g=0;
+    while(uls[0].getBoundingClientRect().width<need&&g++<12)add();
+  }
+  fill();
+  var t;window.addEventListener('resize',function(){clearTimeout(t);t=setTimeout(fill,250);});
+})();
+/* Video: accepts a YouTube ID or any YouTube URL in data-youtube, or a direct file in data-mp4 */
+(function(){
+  var box=document.getElementById('stock-video');if(!box)return;
+  var btn=box.querySelector('.play');if(!btn)return;
+  btn.addEventListener('click',function(){
+    var mp4=(box.getAttribute('data-mp4')||'').trim(),raw=(box.getAttribute('data-youtube')||'').trim(),el;
+    var m=raw.match(/(?:youtu\.be\/|[?&]v=|\/embed\/|\/shorts\/)([A-Za-z0-9_-]{11})/)||raw.match(/^([A-Za-z0-9_-]{11})$/);
+    var yt=m?m[1]:'';
+    if(/\.(mp4|webm|mov)(\?|$)/i.test(mp4)){
+      el=document.createElement('video');el.src=mp4;el.controls=true;el.autoplay=true;el.playsInline=true;el.setAttribute('playsinline','');
+    }else if(yt){
+      el=document.createElement('iframe');
+      el.src='https://www.youtube.com/embed/'+yt+'?autoplay=1&rel=0&modestbranding=1&playsinline=1';
+      el.allow='autoplay; encrypted-media; picture-in-picture; fullscreen';
+      el.referrerPolicy='strict-origin-when-cross-origin';el.allowFullscreen=true;el.title='Championship Chains video';
+    }else{
+      if(!box.querySelector('.notice')){var n=document.createElement('div');n.className='notice';n.textContent='Video source not set. Add a YouTube ID/URL to data-youtube or a .mp4 URL to data-mp4 on #stock-video.';box.appendChild(n);}
+      return;
+    }
+    box.classList.add('is-playing');box.appendChild(el);btn.remove();
+  });
 })();
 </script>
 </body>
